@@ -8,7 +8,25 @@ namespace TaskRun.Models.Entity {
         }
 
         public override CommentDTO Find(params object[] pkeys) {
-            string query = @"select t1.user_id,t3.id,t1.password,t1.user_name,t2.task_name,t3.comment,t2.memo from m_user t1 LEFT JOIN t_task t2 on t1.user_id = t2.user_id LEFT JOIN t_comment t3 on t1.user_id = t3.user_id where t3.id =@Id";
+        string query = @"
+            SELECT 
+                t1.id AS user_id,
+                t2.id AS task_id,
+                t3.id,
+                t3.update_datetime,
+                t1.password,
+                t1.user_name,
+                t2.task_name,
+                t3.comment,
+                t2.memo
+            FROM 
+                m_user t1
+            LEFT JOIN 
+                t_task t2 ON t1.id = t2.user_id
+            LEFT JOIN 
+                t_comment t3 ON t1.id = t3.user_id
+            WHERE 
+                t3.id = @Id";
 
             CommentDTO comm = new CommentDTO();
             using (SqlCommand cmd = new SqlCommand(query, con)) {
@@ -21,9 +39,9 @@ namespace TaskRun.Models.Entity {
                     if (reader.Read()) {
                         comm.Id = int.Parse(reader["id"].ToString());
                         comm.UserId = int.Parse(reader["user_id"].ToString());
-                        //comm.TaskId = int.Parse(reader["task_id"].ToString());
+                        comm.TaskId = int.Parse(reader["task_id"].ToString());
                         comm.Comment = reader["comment"].ToString();
-                        //comm.UpdateDateTime = DateTime.Parse(reader["updatedatetime"].ToString());
+                        comm.UpdateDateTime = DateTime.Parse(reader["update_datetime"].ToString());
                         comm.TaskName = reader["task_name"].ToString();
                         comm.UserName = reader["user_name"].ToString();
                     }

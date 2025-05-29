@@ -98,3 +98,4 @@ C:\Users\ohayo\Desktop\Taskrun\Taskrun\obj\Debug\net8.0\staticwebassets.upToDate
 C:\Users\ohayo\Desktop\Taskrun\Taskrun\obj\Debug\net8.0\Taskrun.csproj.Up2Date
 C:\Users\ohayo\Desktop\Taskrun\Taskrun\obj\Debug\net8.0\Taskrun.genruntimeconfig.cache
 C:\Users\ohayo\Desktop\Taskrun\Taskrun\obj\Debug\net8.0\ref\Taskrun.dll
+C:\Users\ohayo\Desktop\Taskrun\Taskrun\obj\Debug\net8.0\Taskrun.sourcelink.json
