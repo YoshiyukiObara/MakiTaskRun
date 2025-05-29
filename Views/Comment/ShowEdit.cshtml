@@ -1,0 +1,22 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<div>
+    <h1>コメント編集</h1
+<h2>@ViewData["Message"]</h2>
+タスク名 @Model.TaskName <br />
+ユーザ @Model.UserName <br />
+
+    <form action="/Comment/Edit/@(Model.Id)" method="post">
+	コメント	<br /><textarea name="comment">@(Model.Comment) </textarea>
+            <hr />
+            <input type="submit"value="確定" />
+	</form>
+        <form action="/Comment/Delete/@(Model.Id)" method="post">
+        <input type="submit" value="削除" />
+    </form>
+    <a href="/Task/ShowInfo">戻る</a>
+    
+</div>
